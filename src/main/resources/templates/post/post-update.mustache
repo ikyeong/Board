@@ -1,0 +1,31 @@
+{{>layout/header}}
+<br/>
+<div id="post_list">
+    <div class="col-md-12">
+        <form class="card">
+            <div class="card-header d-flex justify-content-between">
+                <label for="id">번호 : {{post.id}}</label>
+                <input type="hidden" id="id" value="{{post.id}}"> {{! label 연결 }}
+                <label for="createdDate">{{post.timeStamp}}</label>
+            </div>
+            <div class="card-header d-flex justify-content-between">
+                <label for="writer">작성자 : {{post.writer}}</label>
+<!--                <label for="view"><i class=" bi bi-eye-fill"> {{!post.view}}</i></label>-->
+            </div>
+            <div class="card-body">
+                <label for="title">제목</label>
+                <input type="text" class="form-control" id="title" value="{{post.title}}">
+            </div>
+
+            <div class="card-body">
+                <label for="contents">내용</label>
+                <textarea rows="5" class="form-control" id="contents">{{post.contents}}</textarea>
+            </div>
+        </form>
+
+        <!--버튼-->
+        <a href="/post/read/{{id}}" role="button" class="btn btn-primary bi bi-arrow-return-left"> 취소</a>
+        <button type="button" id="btn-update" class="btn btn-primary bi bi-pencil-square" onclick="updatePost()"> 완료</button>
+    </div>
+</div>
+{{>layout/footer}}

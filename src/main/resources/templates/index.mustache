@@ -1,0 +1,30 @@
+{{>layout/header}}
+<br/>
+<div id="post_list">
+    <table id="table" class="table table-horizontal">
+        <thead id="thead">
+        <tr>
+            <th>번호</th>
+            <th class="col-md-5">제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#post}}
+            <tr class="bd-highlight">
+                <td>{{id}}</td>
+                <td class="col-5 text-truncate"><a href="/post/read/{{id}}" style="text-decoration: none">{{title}}</a></td>
+                <td>{{writer}}</td>
+                <td>{{timeStamp}}</td>
+            </tr>
+        {{/post}}
+        </tbody>
+    </table>
+    <div class="text-end ">
+        <a href="/post/write" role="button" class="btn btn-primary bi bi-pencil-fill"> 글쓰기</a>
+    </div>
+    {{! Page }}
+    {{!>post/post-page}}
+</div>
+{{>layout/footer}}

@@ -1,0 +1,33 @@
+{{>layout/header}}
+<br/>
+<div id="post_list">
+    <div class="col-md-12">
+        <form class="card">
+            <input type="hidden" id="id" value="{{post.id}}">
+            <div class="card-header d-flex justify-content-between">
+                <label for="title" class="fw-bold">{{post.title}}</label>
+            </div>
+            <div class="card-header d-flex">
+                <label for="writer" style="font-size: small">{{post.writer}} |&nbsp;</label>
+                <label for="timeStamp" style="font-size: small"> {{post.timeStamp}}</label>
+            </div>
+            <div class="card-body">
+                <label for="content" class="p-3">{{post.contents}}</label>
+            </div>
+        </form>
+
+        {{#user}}
+            <a href="/" role="button" class="btn btn-outline-primary btn-sm bi bi-arrow-return-left"> 목록</a>
+            {{#writer}}
+                <a href="/post/update/{{post.id}}" role="button" class="btn btn-outline-primary btn-sm bi bi-pencil-square"> 수정</a>
+                <button type="button" onclick="deletePost()" id="btn-delete" class="btn btn-outline-danger btn-sm bi bi-trash"> 삭제</button>
+            {{/writer}}
+        {{/user}}
+        {{^user}}
+            <a href="/" role="button" class="btn btn-outline-primary btn-sm bi bi-arrow-return-left"> 목록</a>
+        {{/user}}
+        {{>comment/list}}
+        {{>comment/form}}
+    </div>
+</div>
+{{>layout/footer}}

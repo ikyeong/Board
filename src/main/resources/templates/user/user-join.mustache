@@ -1,0 +1,29 @@
+{{>layout/header}}
+<div id="posts_list">
+    <div class="container col-md-4">
+        <form action="/join" method="post">
+            <div class="form-group">
+                <label>아이디</label>
+                <input type="text" name="username" value="{{#userDto}}{{userDto.username}}{{/userDto}}" class="form-control" placeholder="아이디를 입력해주세요"/>
+                {{#username_error}} <span id="error">{{username_error}}</span> {{/username_error}}
+
+            </div>
+
+            <div class="form-group">
+                <label>비밀번호</label>
+                <input type="password" name="password" value="{{#userDto}}{{userDto.password}}{{/userDto}}" class="form-control" placeholder="비밀번호를 입력해주세요"/>
+                {{#password_error}} <span id="error">{{password_error}}</span> {{/password_error}}
+            </div>
+
+            <div class="form-group">
+                <label>닉네임</label>
+                <input type="text" name="nickname" value="{{#userDto}}{{userDto.nickname}}{{/userDto}}" class="form-control" placeholder="닉네임을 입력해주세요"/>
+                {{#nickname_error}} <span id="error">{{nickname_error}}</span> {{/nickname_error}}
+            </div>
+
+            <button class="btn btn-primary bi bi-person"> 가입</button>
+            <a href="/" role="button" class="btn btn-info bi bi-arrow-return-left"> 목록</a>
+        </form>
+    </div>
+</div>
+{{>layout/footer}}
