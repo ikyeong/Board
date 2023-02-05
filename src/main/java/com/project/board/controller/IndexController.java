@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -50,13 +49,13 @@ public class IndexController {
 
     @GetMapping("/post/write")
     public String writePost(Model model){
-        User loginUser = (User) session.getAttribute("LOGIN_USER");
-        if (loginUser == null){
+        User user = (User) session.getAttribute("LOGIN_USER");
+        if (user == null){
             model.addAttribute("error_message", "로그인이 필요한 서비스입니다.");
             model.addAttribute("error_href","/login");
             return "index";
         }
-        model.addAttribute("user",loginUser);
+        model.addAttribute("user",user);
         return "post/post-write";
     }
 
@@ -80,25 +79,10 @@ public class IndexController {
 
     @GetMapping("/post/update/{id}")
     public String updatePost(@PathVariable Long id, Model model){
-        User loginUser = (User) session.getAttribute("LOGIN_USER");
-        model.addAttribute("user",loginUser);
         model.addAttribute("post",postService.findById(id));
         return "post/post-update";
     }
-
-    @GetMapping("/post/search")
-    public String searchPost(@RequestParam(name = "keyword") String keyword, Model model){
-        if (keyword == null || keyword.equals("")){
-            model.addAttribute("error_message", "검색어를 입력해주세요.");
-            model.addAttribute("error_href","/");
-            return "index";
-        }
-        User loginUser = (User) session.getAttribute("LOGIN_USER");
-        List<PostDto.Response> posts = postService.search(keyword);
-        model.addAttribute("user",loginUser);
-        model.addAttribute("count",posts.size());
-        model.addAttribute("keyword",keyword);
-        model.addAttribute("post",posts);
-        return "post/post-search";
-    }
-}
+} //북마크????도 나쁘지 않을듯
+//heart
+//heart{{#isHeart}}{{heart}}{{/isHeart}}
+//                     ->이게 -fill임
