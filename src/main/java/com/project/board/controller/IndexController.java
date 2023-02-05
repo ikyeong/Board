@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -79,10 +80,25 @@ public class IndexController {
 
     @GetMapping("/post/update/{id}")
     public String updatePost(@PathVariable Long id, Model model){
+        User loginUser = (User) session.getAttribute("LOGIN_USER");
+        model.addAttribute("user",loginUser);
         model.addAttribute("post",postService.findById(id));
         return "post/post-update";
     }
-} //북마크????도 나쁘지 않을듯
-//heart
-//heart{{#isHeart}}{{heart}}{{/isHeart}}
-//                     ->이게 -fill임
+
+    @GetMapping("post/search")
+    public String searchPost(@RequestParam(name = "keyword") String keyword, Model model){
+        User loginUser = (User) session.getAttribute("LOGIN_USER");
+        if (keyword == null || keyword.equals("")){
+            model.addAttribute("error_message", "검색어를 입력해주세요.");
+            model.addAttribute("error_href","/");
+            return "index";
+        }
+        List<PostDto.Response> search = postService.search(keyword);
+        model.addAttribute("count",search.size());
+        model.addAttribute("keyword",keyword);
+        model.addAttribute("post",search);
+        model.addAttribute("user",loginUser);
+        return "post/post-search";
+    }
+}
