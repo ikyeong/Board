@@ -82,7 +82,4 @@ public class IndexController {
         model.addAttribute("post",postService.findById(id));
         return "post/post-update";
     }
-} //북마크????도 나쁘지 않을듯
-//heart
-//heart{{#isHeart}}{{heart}}{{/isHeart}}
-//                     ->이게 -fill임
+}
