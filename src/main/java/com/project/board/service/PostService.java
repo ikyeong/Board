@@ -17,7 +17,6 @@ import java.util.List;
 public class PostService {
 
     private final PostRepository postRepository;
-    private final UserRepository userRepository;
 
     @Transactional
     public PostDto.Response save(PostDto.Request dto, User loginUser) {
@@ -49,7 +48,13 @@ public class PostService {
 
 
     public List<PostDto.Response> findAll() {
-        return postRepository.findAll().stream()
+        return postRepository.findAllByOrderByIdDesc().stream()
+                .map(post -> new PostDto.Response(post)).toList();
+    }
+
+    public List<PostDto.Response> search(String keyword) {
+        List<Post> posts = postRepository.findByTitleContainingByOrderByIdDesc(keyword);
+        return posts.stream()
                 .map(post -> new PostDto.Response(post)).toList();
     }
 }

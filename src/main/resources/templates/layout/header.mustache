@@ -18,16 +18,18 @@
     {{/error_message}}
 </head>
 <body>
-<div id="header" class="d-flex bd-highlight">
-    <a href="/" class="p-2 flex-grow-1 bd-highlight fw-bolder">Board!</a>
-<!--    <form action="/posts/search" method="GET" class="form-inline p-2 bd-highlight" role="search">-->
-<!--        <input type="text" name="keyword" class="form-control" id="search" placeholder="검색">-->
-<!--        <button class="btn btn-primary bi bi-search"></button>-->
-<!--    </form>-->
+<div id="header" class="bd-highlight">
+    <a href="/" class="bd-highlight fw-bolder">Board!</a>
 </div>
 
-<nav id ="nav">
-    <div class="text-end">
+<nav id ="nav" class="d-flex">
+    <div class="p-2 flex-grow-1">
+        <form action="/post/search" method="GET" class="form-inline bd-highlight" role="search">
+            <input type="text" name="keyword" class="form-control" id="search" placeholder="검색" {{#keyword}}value="{{keyword}}"{{/keyword}}>
+            <button class="btn btn-primary bi bi-search"></button>
+        </form>
+    </div>
+    <div class="p-2 text-end">
         {{#user}}
             <span class="mx-3">{{user.nickname}}님 안녕하세요!</span>
             <a href="/logout" class="btn btn-outline-dark">로그아웃</a>

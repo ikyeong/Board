@@ -1,5 +1,7 @@
 {{>layout/header}}
-<br/>
+<div class="p-2 fw-light">
+    <span>검색결과 {{count}}개</span>
+</div>
 <div id="post_list">
     <table id="table" class="table table-horizontal">
         <thead id="thead">
@@ -21,8 +23,8 @@
         {{/post}}
         </tbody>
     </table>
-    <div class="text-end ">
-        <a href="/post/write" role="button" class="btn btn-primary bi bi-pencil-fill"> 글쓰기</a>
+    <div>
+        <a href="/" role="button" class="btn btn-outline-primary bi bi-arrow-return-left"> 목록</a>
     </div>
 </div>
 {{>layout/footer}}

@@ -69,6 +69,10 @@ input:invalid {
     color: red;
 }
 
+.form-inline {
+    display: inline-block;
+}
+
 .form-inline .form-control{
     display: inline-block;
     width: auto;
