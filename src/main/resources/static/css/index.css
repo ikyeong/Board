@@ -59,6 +59,7 @@ input:invalid {
 
 #table {
     border-bottom: 2px solid gainsboro;
+    table-layout: fixed;
 }
 #thead {
     background: #f5f5f5;
@@ -77,4 +78,13 @@ input:invalid {
     display: inline-block;
     width: auto;
     vertical-align: middle;
+}
+
+.title{
+    text-decoration: none;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }

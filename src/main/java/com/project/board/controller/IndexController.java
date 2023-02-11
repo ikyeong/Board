@@ -64,6 +64,7 @@ public class IndexController {
     public String readPost(@PathVariable Long id, Model model){
         User loginUser = (User) session.getAttribute("LOGIN_USER");
         PostDto.Response dto = postService.findById(id);
+        dto = postService.updateView(dto);
         if (loginUser != null && loginUser.getId().equals(dto.getUserId())){
             model.addAttribute("writer",true);
         }

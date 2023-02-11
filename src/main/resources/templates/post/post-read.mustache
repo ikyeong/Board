@@ -9,7 +9,12 @@
             </div>
             <div class="card-header d-flex">
                 <label for="writer" style="font-size: small">{{post.writer}} |&nbsp;</label>
-                <label for="timeStamp" style="font-size: small"> {{post.timeStamp}}</label>
+                <label for="timeStamp" style="font-size: small">
+                    {{post.timeStamp}}
+                    {{#post.updateTimeStamp}}<span style="color: lightblue"> ({{post.updateTimeStamp}}수정됨)</span>{{/post.updateTimeStamp}}
+                    &nbsp;|&nbsp;
+                </label>
+                <label for="view" style="font-size: small"><i class="bi bi-eye"></i>{{post.view}}</label>
             </div>
             <div class="card-body">
                 <label for="content" class="p-3">{{post.contents}}</label>

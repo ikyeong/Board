@@ -3,20 +3,22 @@
 <div id="post_list">
     <table id="table" class="table table-horizontal">
         <thead id="thead">
-        <tr>
+        <tr class="text-center">
             <th>번호</th>
-            <th class="col-md-5">제목</th>
+            <th class="col-5">제목</th>
             <th>작성자</th>
             <th>작성일</th>
+            <th>조회수</th>
         </tr>
         </thead>
         <tbody id="tbody">
         {{#post}}
             <tr class="bd-highlight">
-                <td>{{id}}</td>
-                <td class="col-5 text-truncate"><a href="/post/read/{{id}}" style="text-decoration: none">{{title}}</a></td>
-                <td>{{writer}}</td>
-                <td>{{timeStamp}}</td>
+                <td class="text-center">{{id}}</td>
+                <td><a href="/post/read/{{id}}" class="title">{{title}}</a></td>
+                <td class="text-center">{{writer}}</td>
+                <td class="text-center">{{timeStamp}}</td>
+                <td class="text-center">{{view}}</td>
             </tr>
         {{/post}}
         </tbody>

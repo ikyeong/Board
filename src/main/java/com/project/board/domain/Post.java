@@ -28,6 +28,8 @@ public class Post {
     private String contents;
 
     private LocalDate timeStamp;
+    private LocalDate updateTimeStamp;
+    private int view;
 
     @OneToMany(mappedBy = "post")
     private List<Comment> comments;
@@ -40,5 +42,10 @@ public class Post {
     public void update(String title, String contents) {
         this.title = title;
         this.contents = contents;
+        this.updateTimeStamp = LocalDate.now();
+    }
+
+    public void addView(){
+        this.view ++;
     }
 }

@@ -46,15 +46,24 @@ public class PostService {
         postRepository.delete(post);
     }
 
-
+    @Transactional(readOnly = true)
     public List<PostDto.Response> findAll() {
         return postRepository.findAllByOrderByIdDesc().stream()
                 .map(post -> new PostDto.Response(post)).toList();
     }
 
+    @Transactional(readOnly = true)
     public List<PostDto.Response> search(String keyword) {
         List<Post> posts = postRepository.findByTitleContainingByOrderByIdDesc(keyword);
         return posts.stream()
                 .map(post -> new PostDto.Response(post)).toList();
+    }
+
+    @Transactional
+    public PostDto.Response updateView(PostDto.Response dto){
+        Post post = postRepository.findById(dto.getId()).get();
+        post.addView();
+        dto.setView(dto.getView()+1);
+        return dto;
     }
 }

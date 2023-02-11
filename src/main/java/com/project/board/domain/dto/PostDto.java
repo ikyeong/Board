@@ -26,6 +26,7 @@ public class PostDto {
                     .title(title)
                     .contents(contents)
                     .timeStamp(LocalDate.now())
+                    .view(0)
                     .build();
             return post;
         }
@@ -40,6 +41,8 @@ public class PostDto {
         private String title;
         private String contents;
         private LocalDate timeStamp;
+        private LocalDate updateTimeStamp;
+        private int view;
 
         public Response(Post post){
             this.id = post.getId();
@@ -48,6 +51,8 @@ public class PostDto {
             this.title = post.getTitle();
             this.contents = post.getContents();
             this.timeStamp = post.getTimeStamp();
+            this.updateTimeStamp = post.getUpdateTimeStamp();
+            this.view = post.getView();
         }
     }
 }
