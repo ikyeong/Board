@@ -15,7 +15,10 @@
         {{#post}}
             <tr class="bd-highlight">
                 <td class="text-center">{{id}}</td>
-                <td><a href="/post/read/{{id}}" class="title">{{title}}</a></td>
+                <td>
+                    <span class="align-text-top bi bi-chat-dots" style="font-size: small;">{{commentsCount}}</span>
+                    <a href="/post/read/{{id}}" id="title">{{title}}</a>
+                </td>
                 <td class="text-center">{{writer}}</td>
                 <td class="text-center">{{timeStamp}}</td>
                 <td class="text-center">{{view}}</td>

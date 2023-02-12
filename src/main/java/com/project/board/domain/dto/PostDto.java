@@ -43,6 +43,7 @@ public class PostDto {
         private LocalDate timeStamp;
         private LocalDate updateTimeStamp;
         private int view;
+        private int commentsCount;
 
         public Response(Post post){
             this.id = post.getId();
@@ -53,6 +54,7 @@ public class PostDto {
             this.timeStamp = post.getTimeStamp();
             this.updateTimeStamp = post.getUpdateTimeStamp();
             this.view = post.getView();
+            this.commentsCount = post.getComments().size();
         }
     }
 }

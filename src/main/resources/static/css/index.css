@@ -80,9 +80,9 @@ input:invalid {
     vertical-align: middle;
 }
 
-.title{
+td #title{
     text-decoration: none;
-    width: 100%;
+    width: 85%;
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
