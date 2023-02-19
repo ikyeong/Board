@@ -82,7 +82,8 @@ input:invalid {
 
 td #title{
     text-decoration: none;
-    width: 85%;
+    color: black;
+    max-width: 85%;
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;

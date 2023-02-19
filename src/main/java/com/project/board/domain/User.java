@@ -24,7 +24,7 @@ public class User {
 
     private String nickname;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Post> posts;
 
     public void addPost(Post post){

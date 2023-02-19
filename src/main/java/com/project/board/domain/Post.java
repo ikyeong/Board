@@ -31,7 +31,7 @@ public class Post {
     private LocalDate updateTimeStamp;
     private int view;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Comment> comments;
 
     public void addComment(Comment comment){

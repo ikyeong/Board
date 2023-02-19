@@ -4,12 +4,12 @@ import com.project.board.domain.Post;
 import com.project.board.domain.User;
 import com.project.board.domain.dto.PostDto;
 import com.project.board.repository.PostRepository;
-import com.project.board.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,11 +23,12 @@ public class PostService {
         Post post = dto.toEntity();
         post.setUser(loginUser);
         post.setTimeStamp(LocalDate.now());
+        post.setComments(new ArrayList<>());
         loginUser.addPost(post);
         return new PostDto.Response(postRepository.save(post));
     }
 
-    @Transactional( readOnly = true)
+    @Transactional
     public PostDto.Response findById(Long id){
         Post post = postRepository.findById(id).orElseThrow(() ->
                 new IllegalArgumentException("게시글이 존재하지 않습니다."));
@@ -46,13 +47,13 @@ public class PostService {
         postRepository.delete(post);
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public List<PostDto.Response> findAll() {
         return postRepository.findAllByOrderByIdDesc().stream()
                 .map(post -> new PostDto.Response(post)).toList();
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     public List<PostDto.Response> search(String keyword) {
         List<Post> posts = postRepository.findByTitleContainingByOrderByIdDesc(keyword);
         return posts.stream()
