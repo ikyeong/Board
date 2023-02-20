@@ -27,6 +27,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Post> posts;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private List<Heart> hearts;
+
     public void addPost(Post post){
         this.posts.add(post);
         post.setUser(this);

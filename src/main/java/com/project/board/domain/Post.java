@@ -34,6 +34,9 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Comment> comments;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    private List<Heart> hearts;
+
     public void addComment(Comment comment){
         this.comments.add(comment);
         comment.setPost(this);

@@ -44,6 +44,7 @@ public class PostDto {
         private LocalDate updateTimeStamp;
         private int view;
         private int commentsCount;
+        private int heartsCount;
 
         public Response(Post post){
             this.id = post.getId();
@@ -54,7 +55,10 @@ public class PostDto {
             this.timeStamp = post.getTimeStamp();
             this.updateTimeStamp = post.getUpdateTimeStamp();
             this.view = post.getView();
-            this.commentsCount = post.getComments().size();
+            if (post.getComments() == null) this.commentsCount = 0;
+            else this.commentsCount = post.getComments().size();
+            if (post.getHearts() == null) this.heartsCount = 0;
+            else this.heartsCount = post.getHearts().size();
         }
     }
 }

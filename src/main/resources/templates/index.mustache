@@ -8,7 +8,6 @@
             <th class="col-5">제목</th>
             <th>작성자</th>
             <th>작성일</th>
-            <th>조회수</th>
         </tr>
         </thead>
         <tbody id="tbody">
@@ -16,12 +15,12 @@
             <tr class="bd-highlight">
                 <td class="text-center">{{id}}</td>
                 <td>
-                    <a href="/post/read/{{id}}" id="title">{{title}}</a>
-                    <span class="text-primary" style="position: relative; top: -5px;">{{commentsCount}}</span>
+                    <a href="/post/read/{{id}}" id="title">{{title}}<span class="text-primary d-inline-block" >&nbsp;{{commentsCount}}</span></a>
+                    <span class="bi bi-hand-thumbs-up" style="font-size: small">{{heartsCount}}</span>
+                    <span class="bi bi-eye" style="font-size: small">{{view}}</span>
                 </td>
                 <td class="text-center">{{writer}}</td>
                 <td class="text-center">{{timeStamp}}</td>
-                <td class="text-center">{{view}}</td>
             </tr>
         {{/post}}
         </tbody>

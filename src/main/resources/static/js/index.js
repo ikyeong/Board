@@ -94,3 +94,25 @@ function deleteComment( commentId ){
             "/post/read/"+postId.value);
     }
 }
+
+function addHeart( postId ){
+    var check = confirm("이 글을 공감하시겠습니까?");
+    if (check === true){
+        callApi("POST",
+            "/api/heart/"+postId,
+            null,
+            "이 글을 공감하였습니다.",
+            "/post/read/"+postId);
+    }
+}
+
+function deleteHeart( postId ){
+    var check = confirm("공감을 취소하겠습니까?");
+    if (check === true){
+        callApi("DELETE",
+            "/api/heart/"+postId,
+            null,
+            "공감이 취소되었습니다.",
+            "/post/read/"+postId);
+    }
+}

@@ -19,9 +19,16 @@
             <div class="card-body">
                 <label for="content" class="p-3">{{post.contents}}</label>
                 {{#user}}
-                    <div class="d-flex justify-content-center">
-                        <button type="button" onclick="addHeart({{post.id}})" id="btn-heart" class="btn btn-outline-primary bi bi-hand-thumbs-up">4</button>
-                    </div>
+                    {{#heart}}
+                        <div class="d-flex justify-content-center">
+                            <button type="button" onclick="deleteHeart({{post.id}})" id="btn-heart-delete" class="btn btn-primary bi bi-hand-thumbs-up">{{post.heartsCount}}</button>
+                        </div>
+                    {{/heart}}
+                    {{^heart}}
+                        <div class="d-flex justify-content-center">
+                            <button type="button" onclick="addHeart({{post.id}})" id="btn-heart" class="btn btn-outline-primary bi bi-hand-thumbs-up">{{post.heartsCount}}</button>
+                        </div>
+                    {{/heart}}
                 {{/user}}
             </div>
         </form>

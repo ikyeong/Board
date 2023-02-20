@@ -4,6 +4,7 @@ import com.project.board.domain.User;
 import com.project.board.domain.dto.CommentDto;
 import com.project.board.domain.dto.PostDto;
 import com.project.board.service.CommentService;
+import com.project.board.service.HeartService;
 import com.project.board.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,8 @@ public class IndexController {
     
     private final PostService postService;
     private final CommentService commentService;
+    private final HeartService heartService;
+
     private final HttpSession session;
 
     @GetMapping("/")
@@ -67,6 +70,9 @@ public class IndexController {
         dto = postService.updateView(dto);
         if (loginUser != null && loginUser.getId().equals(dto.getUserId())){
             model.addAttribute("writer",true);
+        }
+        if (heartService.exist(loginUser,dto.getId())){
+            model.addAttribute("heart",true);
         }
         model.addAttribute("user",loginUser);
         model.addAttribute("post",dto);

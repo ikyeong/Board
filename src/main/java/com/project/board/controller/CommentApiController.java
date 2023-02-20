@@ -31,7 +31,6 @@ public class CommentApiController {
                                  @PathVariable( name = "commentId") Long id){
         commentService.update(dto,id);
         return ResponseEntity.ok(id);
-
     }
 
     @DeleteMapping("/api/post/{postId}/comment/{commentId}")
